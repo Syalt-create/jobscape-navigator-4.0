@@ -18,6 +18,9 @@ body {
 }
 .maincontent {
   display: none;
+  width: min(100%-32px, 800px);
+  margin-inline: auto;
+  margin-top: 50vh;
 }
 #homepage {
   display: block;
