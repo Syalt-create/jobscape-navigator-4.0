@@ -1,6 +1,6 @@
 const quizbutton = document.getElementById("enterquiz");
 const aboutbutton = document.getElementById("enterabout");
-const navigatebackbutton = document.getElemenyById("navigateback");
+const navigatebackbutton = document.getElementById("navigateback");
 
 const homepagediv = document.getElementById("homepage");
 const aboutpagediv = document.getElementById("aboutpage");
