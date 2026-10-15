@@ -7,6 +7,7 @@ body {
   color: #F3F8F1;
   line-height: 1.1;
   letter-spacing: -0.05em;
+  margin: 4px;
 }
 .title {
   font-size: 48px;
