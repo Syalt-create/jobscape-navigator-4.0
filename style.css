@@ -5,6 +5,8 @@
 body {
   background-color: #202A23;
   color: #E2EFDE;
+  line-height: 1.1;
+  letter-spacing: -0.05em;
 }
 .title {
   font-size: 48px;
