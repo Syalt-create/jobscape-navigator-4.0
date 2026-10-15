@@ -1,6 +1,6 @@
 const quizbutton = document.getElementById("enterquiz");
 const aboutbutton = document.getElementById("enterabout");
-const navigatebackbutton = document.querySelectorAll(".navigateback");
+const navigatebackbuttons = document.querySelectorAll(".navigateback");
 
 const homepagediv = document.getElementById("homepage");
 const aboutpagediv = document.getElementById("aboutpage");
@@ -23,6 +23,6 @@ aboutbutton.addEventListener("click", function() {
 
 navigatebackbuttons.forEach(function(button) {
   button.addEventListener("click", function() {
-    function showpage(homepagediv);
+    showpage(homepagediv);
   });
 });
