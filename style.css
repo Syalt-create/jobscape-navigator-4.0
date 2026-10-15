@@ -2,3 +2,9 @@
 * {
   font-family: "PT Sans", sans-serif;
 }
+.maincontent {
+  display: none;
+}
+#homepage {
+  display: block;
+}
