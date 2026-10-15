@@ -2,6 +2,18 @@
 * {
   font-family: "PT Sans", sans-serif;
 }
+body {
+  background-color: #202A23;
+  color: #E2EFDE;
+}
+.title {
+  font-size: 48px;
+  color: #CCE2D2;
+}
+.subheading {
+  font-size: 36px;
+  color: #D7E9D8;
+}
 .maincontent {
   display: none;
 }
