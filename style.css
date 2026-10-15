@@ -1,6 +1,6 @@
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap');
 * {
-  font-family: "PT Sans", sans-serif;
+  font-family: "Noto Sans", sans-serif;
 }
 body {
   background-color: #202A23;
@@ -24,4 +24,8 @@ body {
 }
 #homepage {
   display: block;
+}
+hr {
+  color: #E2EFDE;
+  width: 90%;
 }
