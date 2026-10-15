@@ -20,7 +20,7 @@ body {
   display: none;
   width: min(100%-32px, 800px);
   margin-inline: auto;
-  margin-top: 50vh;
+  margin-top: 10vh;
 }
 #homepage {
   display: block;
