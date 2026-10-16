@@ -26,6 +26,9 @@ body {
 #homepage {
   display: block;
 }
+#questios {
+  display: none;
+}
 hr {
   color: #F3F8F1;
   width: 100%;
