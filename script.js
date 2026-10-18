@@ -1,3 +1,5 @@
+// the function to calculate the user's recommended job is calcAnswers(answers) also answers is an arr btw dont fuck it up
+
 const quizbutton = document.getElementById("enterquiz");
 const aboutbutton = document.getElementById("enterabout");
 const navigatebackbuttons = document.querySelectorAll(".navigateback");
@@ -36,6 +38,15 @@ navigatebackbuttons.forEach(function(button) {
 
 let currentQuestion = 0;
 
+function calcAnswers(answers) { // i couldnt come up with a better algorithm so we're doing manual labor :) have fun doing ts i wish yal the best of luck
+  let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // this array contains all the scores for each job. for the order, refer to index.html. for the questions value, refer to the gg docs file.
+  // DO COMPARISON BULLCRAP HERE
+  const result = score.every(element => element <= 1);
+  // IF: no score is over 2, reccomend the user to keep exploring IT to see what they like best
+  // IF: no score is over 1, IT isnt for them
+  // IF: two or more scores are over 2, pick either the highest one, or if there is a tie, pick random or pick first (its lazy asf ik but bro idgaf)
+}
+
 function showQuestion(index) {
   questions.forEach(function(question, i) {
     question.style.display = i === index ? "block" : "none";
@@ -60,6 +71,15 @@ nextBtn.addEventListener("click", function() {
     showQuestion(currentQuestion);
   } else {
     alert("Bạn đã hoàn thành bài trắc nghiệm!");
+    // get all radio buttons answers (a, b, c, d, null) into one big array
+    const answers= []
+    for (let i = 1; i <= 10; i++) {
+      const selected = document.querySelector(
+        `input[name="q${i}radio"]:checked`
+      ); // loop and attach a querySelector to the radios
+      answers.push(selected ? selected.value : null); // if no answer chosen, return null
+    }
+    calcAnswers(answers)
   }
 });
 
