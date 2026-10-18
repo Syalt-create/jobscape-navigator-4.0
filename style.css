@@ -3,7 +3,7 @@
   font-family: "Noto Sans", sans-serif;
 }
 body {
-  background-color: #313C7B;
+  background-color: #313C7BA0;
   color:#EBF9FF;
   line-height: 1.1;
   letter-spacing: -0.05em;
@@ -78,13 +78,14 @@ button:hover {
 /* Rectangle behind the content /
 .questions {
   display: none;
-  background-color: #313C7B;
+  background-color: #313C7BA0;
   padding: 24px;
   border-radius: 12px;
   border: 1px solid #6E81B9;
   box-sizing: border-box;
 }
 */
+/*QK: i changed the background-color of body to around 25% transparency (alpha channel) btw*/
 /* Show the active question */
 .questions.active {
   display: block;
