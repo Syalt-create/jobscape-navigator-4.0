@@ -40,6 +40,10 @@ let currentQuestion = 0;
 function calcAnswers(answers) { // i couldnt come up with a better algorithm so we're doing manual labor :) have fun doing ts i wish yal the best of luck
   let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // this array contains all the scores for each job. for the order, refer to index.html. for the questions value, refer to the gg docs file.
   // DO COMPARISON BULLCRAP HERE (DONE by qk)
+  const a = "a";
+  const b = "b";
+  const c = "c";
+  const d = "d"; // qk: i accidetally wrote these bullshit switch cases but im so fucking lazy to fix them so this'll do lmao have fun
   const result = score.every(element => element <= 1);
   switch (answers[1]) {
     case a:
