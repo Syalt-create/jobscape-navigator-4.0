@@ -7,6 +7,8 @@ const navigatebackbuttons = document.querySelectorAll(".navigateback");
 const homepagediv = document.getElementById("homepage");
 const aboutpagediv = document.getElementById("aboutpage");
 const quizpagediv = document.getElementById("quizpage");
+const resultspagediv = document.getElementById("resultspage");
+const resultContent = document.getElementById("resultContent");
 
 
 const questions = document.querySelectorAll("#quizpage .questions");
@@ -18,6 +20,7 @@ function showpage(page) {
   quizpagediv.style.display = "none";
   aboutpagediv.style.display = "none";
   homepagediv.style.display = "none";
+  resultspagediv.style.display = "none";
   page.style.display = "block";
 }
 
@@ -159,7 +162,7 @@ function calcAnswers(answers) {
       index_ = i;
     }
   }
-  console.log(to_string[index_]);
+  return to_string[index_];
 }
 
 
@@ -206,10 +209,90 @@ nextBtn.addEventListener("click", function() {
   if (currentQuestion < questions.length - 1) {
     currentQuestion++;
     showQuestion(currentQuestion);
-  } else {
-    alert("Bạn đã hoàn thành bài trắc nghiệm!");
-    calcAnswers(answers);
-  }
+
+} else {
+  const result = calcAnswers(answers);
+
+  const careers = {
+    software_dev: {
+      name: "Phát triển phần mềm",
+      description: "Bạn thích lập trình, giải quyết vấn đề và xây dựng ứng dụng."
+    },
+    cybersecurity: {
+      name: "An toàn thông tin và an ninh mạng",
+      description: "Bạn có xu hướng quan tâm đến bảo mật, rủi ro và cách bảo vệ hệ thống."
+    },
+    uiux_dev: {
+      name: "Thiết kế UI/UX",
+      description: "Bạn quan tâm đến giao diện, tính thẩm mỹ và trải nghiệm người dùng."
+    },
+    not_interested: {
+      name: "Khám phá thêm sở thích",
+      description: "Bạn có thể thử tìm hiểu thêm các lĩnh vực công nghệ để khám phá điều mình yêu thích."
+    },
+    ai: {
+      name: "Trí tuệ nhân tạo",
+      description: "Bạn có hứng thú với các hệ thống thông minh và khả năng học hỏi của máy tính."
+    },
+    embedded_iot_robotics: {
+      name: "Hệ thống nhúng, IoT và robotics",
+      description: "Bạn có thể phù hợp với việc kết hợp phần mềm, điện tử và thiết bị thông minh."
+    },
+    cloud_devops: {
+      name: "Điện toán đám mây và DevOps",
+      description: "Bạn quan tâm đến triển khai, tự động hóa và vận hành hệ thống."
+    },
+    business_analysis: {
+      name: "Phân tích nghiệp vụ",
+      description: "Bạn thích tìm hiểu nhu cầu và kết nối người dùng với giải pháp công nghệ."
+    },
+    qa_testing: {
+      name: "Kiểm thử phần mềm",
+      description: "Bạn có xu hướng chú ý đến chi tiết, phát hiện lỗi và cải thiện chất lượng."
+    },
+    data_science: {
+      name: "Khoa học dữ liệu",
+      description: "Bạn thích phân tích dữ liệu, tìm quy luật và rút ra kết luận."
+    },
+    network_sysadmin: {
+      name: "Mạng máy tính và quản trị hệ thống",
+      description: "Bạn quan tâm đến kết nối mạng, máy chủ và vận hành hệ thống."
+    },
+    network_iot: {
+      name: "Mạng và Internet vạn vật",
+      description: "Bạn có hứng thú với việc kết nối thiết bị qua mạng."
+    },
+    project_management: {
+      name: "Quản lý dự án CNTT",
+      description: "Bạn thích tổ chức công việc, phối hợp nhóm và quản lý tiến độ."
+    }
+  };
+
+  const career = careers[result] || careers.not_interested;
+
+  resultContent.innerHTML = `
+    <h3>Kết quả định hướng nghề nghiệp của bạn</h3>
+    <h2>${career.name}</h2>
+    <p>${career.description}</p>
+    <p>Đây là gợi ý dựa trên câu trả lời của bạn,
+    không phải kết luận nghề nghiệp tuyệt đối.</p>
+    <button id="retakeQuiz" type="button">Làm lại bài trắc nghiệm</button>
+  `;
+
+  showpage(resultspagediv);
+
+  document.getElementById("retakeQuiz").addEventListener("click", () => {
+    answers.length = 0;
+    currentQuestion = 0;
+
+    document.querySelectorAll(
+      '#quizpage input[type="radio"]'
+    ).forEach(radio => radio.checked = false);
+
+    showpage(quizpagediv);
+    showQuestion(currentQuestion);
+  });
+}
 });
 
 showQuestion(currentQuestion);
