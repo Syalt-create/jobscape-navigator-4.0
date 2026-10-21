@@ -95,7 +95,7 @@ function calcAnswers(answers) {
   ];
 
   for (let i = 0; i < 10; i++) {
-		switch (answer[i]) {
+		switch (answers[i]) {
 		  case "a":
 		    if (Array.isArray(a_ans[i])) {
 		      for (let j = 0; j < a_ans[i].length; j++) {
