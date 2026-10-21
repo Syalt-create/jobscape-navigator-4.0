@@ -41,7 +41,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
   let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // this array contains all the scores for each job. for the order, refer to index.html. for the questions value, refer to the gg docs file.
   // DO COMPARISON BULLCRAP HERE (DONE by qk)
   const result = score.every(element => element <= 1);
-  switch (answer[1]) {
+  switch (answers[1]) {
     case a:
       score[1] += 1;
       break;
@@ -52,7 +52,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[8] += 1;
       break;
   }
-  switch (answer[2]) {
+  switch (answers[2]) {
     case a:
       score[2] += 1;
       break;
@@ -63,7 +63,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[6] += 1;
       break;
   }  
-  switch (answer[3]) {
+  switch (answers[3]) {
     case a:
       score[10] += 1;
       break;
@@ -74,7 +74,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[8] += 1;
       break;
   }
-  switch (answer[4]) {
+  switch (answers[4]) {
     case a:
       score[3] += 1;
       break;
@@ -85,7 +85,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[10] += 1;
       break;
   }
-  switch (answer[5]) {
+  switch (answers[5]) {
     case a:
       score[4] += 1;
       break;
@@ -96,7 +96,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[6] += 1;
       break;
   }
-  switch (answer[6]) {
+  switch (answers[6]) {
     case a:
       score[9] += 1;
       break;
@@ -105,7 +105,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[6] += 1;
       break;
   }
-  switch (answer[7]) {
+  switch (answers[7]) {
     case a:
       score[7] += 1;
       score[4] += 1;
@@ -118,7 +118,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[3] += 1;
       break;
   }
-  switch (answer[8]) {
+  switch (answers[8]) {
     case a:
       score[2] += 1;
       break;
@@ -129,7 +129,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[6] += 1;
       break;
   }
-  switch (answer[9]) {
+  switch (answers[9]) {
     case a:
       score[8] += 1;
       break;
@@ -140,7 +140,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[1] += 1;
       break;
   }
-  switch (answer[10]) {
+  switch (answers[10]) {
     case a:
       score[1] += 1;
     case b:
