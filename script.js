@@ -133,6 +133,8 @@ function calcAnswers(answers) {
 		}
   }               
   const result = score.every(element => element <= 1);
+	const nghe = score.filter(function over3(score) { return score >= 3 } )
+	const reccomended = nghe[0]
 }
 
 function showQuestion(index) {
