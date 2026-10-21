@@ -37,132 +37,102 @@ navigatebackbuttons.forEach(function(button) {
 
 let currentQuestion = 0;
 
-function calcAnswers(answers) { // i couldnt come up with a better algorithm so we're doing manual labor :) have fun doing ts i wish yal the best of luck
-  let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // this array contains all the scores for each job. for the order, refer to index.html. for the questions value, refer to the gg docs file.
-  // DO COMPARISON BULLCRAP HERE (DONE by qk)
-  const a = "a";
-  const b = "b";
-  const c = "c";
-  const d = "d"; // qk: i accidetally wrote these bullshit switch cases but im so fucking lazy to fix them so this'll do lmao have fun
+function calcAnswers(answers) {
+  let score = Array(13).fill(0);
+
+  const software_dev = 0;
+  const cybersecurity = 1;
+  const uiux_dev = 2;
+  const not_interested = 3;
+  const ai = 4;
+  const embedded_iot_robotics = 5;
+  const cloud_devops = 6;
+  const business_analysis = 7;
+  const qa_testing = 8;
+  const data_science = 9;
+  const network_sysadmin = 10;
+  const network_iot = 11;
+  const project_management = 12;
+
+  const a_ans = [
+		[software_dev],
+		[ai],
+		[business_analysis, project_management],
+		[data_science],
+		[cybersecurity],
+		[embedded_iot_robotics],
+		[qa_testing, cybersecurity],
+		[ai],
+		[uiux_dev],
+		[software_dev, cybersecurity, ai, data_science,
+		 embedded_iot_robotics, cloud_devops, network_sysadmin]
+  ];
+
+  const b_ans = [
+		[cybersecurity],
+		[embedded_iot_robotics],
+		[qa_testing],
+		[software_dev],
+		[network_sysadmin],
+		[network_iot],
+		[uiux_dev],
+		[network_sysadmin],
+		[business_analysis],
+		[uiux_dev, business_analysis, project_management]
+  ];
+
+  const c_ans = [
+		[uiux_dev],
+		[cloud_devops],
+		[uiux_dev],
+		[business_analysis],
+		[cloud_devops],
+		[software_dev],
+		[software_dev, ai, data_science],
+		[cloud_devops],
+		[software_dev],
+		[not_interested]
+  ];
+
+  for (let i = 0; i < 10; i++) {
+		switch (answer[i]) {
+		  case "a":
+		    if (Array.isArray(a_ans[i])) {
+		      for (let j = 0; j < a_ans[i].length; j++) {
+		        score[a_ans[i][j]]++;
+		      }
+		    } else {
+		      score[a_ans[i]]++;
+		    }
+		    break;
+
+		  case "b":
+		    if (Array.isArray(b_ans[i])) {
+		      for (let j = 0; j < b_ans[i].length; j++) {
+		        score[b_ans[i][j]]++;
+		      }
+		    } else {
+		      score[b_ans[i]]++;
+		    }
+		    break;
+
+		  case "c":
+		    if (Array.isArray(c_ans[i])) {
+		      for (let j = 0; j < c_ans[i].length; j++) {
+		        score[c_ans[i][j]]++;
+		      }
+		    } else {
+		      score[c_ans[i]]++;
+		    }
+		    break;
+
+		  case "d":
+		  default:
+		    score[not_interested]++;
+		    break;
+		}
+  }               
   const result = score.every(element => element <= 1);
-  switch (answers[1]) {
-    case a:
-      score[1] += 1;
-      break;
-    case b:
-      score[4] += 1;
-      break;
-    case c:
-      score[8] += 1;
-      break;
-  }
-  switch (answers[2]) {
-    case a:
-      score[2] += 1;
-      break;
-    case b:
-      score[9] += 1;
-      break;
-    case c:
-      score[6] += 1;
-      break;
-  }  
-  switch (answers[3]) {
-    case a:
-      score[10] += 1;
-      break;
-    case b:
-      score[7] += 1;
-      break;
-    case c:
-      score[8] += 1;
-      break;
-  }
-  switch (answers[4]) {
-    case a:
-      score[3] += 1;
-      break;
-    case b:
-      score[1] += 1;
-      break;
-    case c:
-      score[10] += 1;
-      break;
-  }
-  switch (answers[5]) {
-    case a:
-      score[4] += 1;
-      break;
-    case b:
-      score[5] += 1;
-      break;
-    case c:
-      score[6] += 1;
-      break;
-  }
-  switch (answers[6]) {
-    case a:
-      score[9] += 1;
-      break;
-    case b:
-      score[9] += 1;
-      score[6] += 1;
-      break;
-  }
-  switch (answers[7]) {
-    case a:
-      score[7] += 1;
-      score[4] += 1;
-      break;
-    case b:
-      score[8] += 1;
-      break;
-    case c:
-      score[2] += 1;
-      score[3] += 1;
-      break;
-  }
-  switch (answers[8]) {
-    case a:
-      score[2] += 1;
-      break;
-    case b:
-      score[5] += 1;
-      break;
-    case c:
-      score[6] += 1;
-      break;
-  }
-  switch (answers[9]) {
-    case a:
-      score[8] += 1;
-      break;
-    case b:
-      score[10] += 1;
-      break;
-    case c:
-      score[1] += 1;
-      break;
-  }
-  switch (answers[10]) {
-    case a:
-      score[1] += 1;
-    case b:
-      score[8] += 1;
-  } //HOLY SHIT IM DONE
-  const reccomend_high = answers // vibe coded bs to filter if meets condition and take index
-    .map((value, index) => ({ value, index }))
-    .filter(item => item.value >= 3)
-    .map(item => item.index + 1);
-  const reccomend = answers
-    .map((value, index) => ({ value, index }))
-    .filter(item => item.value > 1)
-    .map(item => item.index + 1); // test this shit i swear to god i have no idea what i just wrote
-  console.log(reccomend_high);
-  console.log(reccomend); // FUCK FIX TIS
-  // IF: no score is over 3, reccomend the user to keep exploring IT to see what they like best
-  // IF: no score is over 1, IT isnt for them
-  // IF: two or more scores are over 3, pick either the highest one, or if there is a tie, pick random or pick first (its lazy asf ik but bro idgaf)
 }
 
 function showQuestion(index) {
@@ -195,7 +165,7 @@ nextBtn.addEventListener("click", function() {
       const selected = document.querySelector(
         `input[name="q${i}radio"]:checked`
       ); // loop and attach a querySelector to the radios
-      answers.push(selected ? selected.value : null); // if no answer chosen, return null
+      answers.push(selected ? selected.value : "-1"); // if no answer chosen, return null
     }
     calcAnswers(answers)
   }
