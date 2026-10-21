@@ -40,8 +40,122 @@ let currentQuestion = 0;
 
 function calcAnswers(answers) { // i couldnt come up with a better algorithm so we're doing manual labor :) have fun doing ts i wish yal the best of luck
   let score = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0] // this array contains all the scores for each job. for the order, refer to index.html. for the questions value, refer to the gg docs file.
-  // DO COMPARISON BULLCRAP HERE
+  // DO COMPARISON BULLCRAP HERE (DONE by qk)
   const result = score.every(element => element <= 1);
+  switch (answer[1]) {
+    case a:
+      score[1] += 1;
+      break;
+    case b:
+      score[4] += 1;
+      break;
+    case c:
+      score[8] += 1;
+      break;
+  }
+  switch (answer[2]) {
+    case a:
+      score[2] += 1;
+      break;
+    case b:
+      score[9] += 1;
+      break;
+    case c:
+      score[6] += 1;
+      break;
+  }  
+  switch (answer[3]) {
+    case a:
+      score[10] += 1;
+      break;
+    case b:
+      score[7] += 1;
+      break;
+    case c:
+      score[8] += 1;
+      break;
+  }
+  switch (answer[4]) {
+    case a:
+      score[3] += 1;
+      break;
+    case b:
+      score[1] += 1;
+      break;
+    case c:
+      score[10] += 1;
+      break;
+  }
+  switch (answer[5]) {
+    case a:
+      score[4] += 1;
+      break;
+    case b:
+      score[5] += 1;
+      break;
+    case c:
+      score[6] += 1;
+      break;
+  }
+  switch (answer[6]) {
+    case a:
+      score[9] += 1;
+      break;
+    case b:
+      score[9] += 1;
+      score[6] += 1;
+      break;
+  switch (answer[7]) {
+    case a:
+      score[7] += 1;
+      score[4] += 1;
+      break;
+    case b:
+      score[8] += 1;
+      break;
+    case c:
+      score[2] += 1;
+      score[3] += 1;
+      break;
+  }
+  switch (answer[8]) {
+    case a:
+      score[2] += 1;
+      break;
+    case b:
+      score[5] += 1;
+      break;
+    case c:
+      score[6] += 1;
+      break;
+  }
+  switch (answer[9]) {
+    case a:
+      score[8] += 1;
+      break;
+    case b:
+      score[10] += 1;
+      break;
+    case c:
+      score[1] += 1;
+      break;
+  }
+  switch (answer[10]) {
+    case a:
+      score[1] += 1;
+    case b:
+      score[8] += 1;
+  } //HOLY SHIT IM DONE
+  const reccomend_high = answers // vibe coded bs to filter if meets condition and take index
+    .map((value, index) => ({ value, index }))
+    .filter(item => item.value > 3)
+    .map(item => item.index + 1);
+  const reccomend = answers
+    .map((value, index) => ({ value, index }))
+    .filter(item => item.value > 1)
+    .map(item => item.index + 1); // test this shit i swear to god i have no idea what i just wrote
+  console.log(reccomend_high);
+  console.log(reccomend);
   // IF: no score is over 2, reccomend the user to keep exploring IT to see what they like best
   // IF: no score is over 1, IT isnt for them
   // IF: two or more scores are over 2, pick either the highest one, or if there is a tie, pick random or pick first (its lazy asf ik but bro idgaf)
