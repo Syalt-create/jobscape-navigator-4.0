@@ -35,7 +35,6 @@ navigatebackbuttons.forEach(function(button) {
   });
 });
 
-
 let currentQuestion = 0;
 
 function calcAnswers(answers) { // i couldnt come up with a better algorithm so we're doing manual labor :) have fun doing ts i wish yal the best of luck
@@ -105,6 +104,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
       score[9] += 1;
       score[6] += 1;
       break;
+  }
   switch (answer[7]) {
     case a:
       score[7] += 1;
