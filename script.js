@@ -152,7 +152,7 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
   } //HOLY SHIT IM DONE
   const reccomend_high = answers // vibe coded bs to filter if meets condition and take index
     .map((value, index) => ({ value, index }))
-    .filter(item => item.value > 3)
+    .filter(item => item.value >= 3)
     .map(item => item.index + 1);
   const reccomend = answers
     .map((value, index) => ({ value, index }))
