@@ -159,10 +159,10 @@ function calcAnswers(answers) { // i couldnt come up with a better algorithm so 
     .filter(item => item.value > 1)
     .map(item => item.index + 1); // test this shit i swear to god i have no idea what i just wrote
   console.log(reccomend_high);
-  console.log(reccomend);
-  // IF: no score is over 2, reccomend the user to keep exploring IT to see what they like best
+  console.log(reccomend); // FUCK FIX TIS
+  // IF: no score is over 3, reccomend the user to keep exploring IT to see what they like best
   // IF: no score is over 1, IT isnt for them
-  // IF: two or more scores are over 2, pick either the highest one, or if there is a tie, pick random or pick first (its lazy asf ik but bro idgaf)
+  // IF: two or more scores are over 3, pick either the highest one, or if there is a tie, pick random or pick first (its lazy asf ik but bro idgaf)
 }
 
 function showQuestion(index) {
