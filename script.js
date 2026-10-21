@@ -36,6 +36,8 @@ navigatebackbuttons.forEach(function(button) {
 });
 
 let currentQuestion = 0;
+const answers = [];
+
 
 function calcAnswers(answers) {
   let score = Array(13).fill(0);
@@ -53,6 +55,22 @@ function calcAnswers(answers) {
   const network_sysadmin = 10;
   const network_iot = 11;
   const project_management = 12;
+
+  let to_string = Array(13).fill("");
+  to_string[software_dev] = "software_dev";
+  to_string[cybersecurity] = "cybersecurity";
+  to_string[uiux_dev] = "uiux_dev";
+  to_string[not_interested] = "not_interested";
+  to_string[ai] = "ai";
+  to_string[embedded_iot_robotics] = "embedded_iot_robotics";
+  to_string[cloud_devops] = "cloud_devops";
+  to_string[business_analysis] = "business_analysis";
+  to_string[qa_testing] = "qa_testing";
+  to_string[data_science] = "data_science";
+  to_string[network_sysadmin] = "network_sysadmin";
+  to_string[network_iot] = "network_iot";
+  to_string[project_management] = "project_management";
+  
 
   const a_ans = [
 		[software_dev],
@@ -131,11 +149,19 @@ function calcAnswers(answers) {
 		    score[not_interested]++;
 		    break;
 		}
-  }               
-  const result = score.every(element => element <= 1);
-	const nghe = score.filter(function over3(score) { return score >= 3 } )
-	const reccomended = nghe[0]
+  }
+  
+  let mscore = 0;
+  let index_ = -1;
+	for (let i = 0; i < 13; i++) {
+    if (score[i] > mscore){
+      mscore = score[i];
+      index_ = i;
+    }
+  }
+  console.log(to_string[index_]);
 }
+
 
 function showQuestion(index) {
   questions.forEach(function(question, i) {
@@ -146,6 +172,16 @@ function showQuestion(index) {
   prevBtn.disabled = index === 0;
   nextBtn.textContent =
     index === questions.length - 1 ? "Hoàn thành" : "Câu tiếp";
+
+  // Restore the previously selected answer when returning to a question.
+  const savedAnswer = answers[index];
+  const radios = document.querySelectorAll(
+    `input[name="q${index + 1}radio"]`
+  );
+
+  radios.forEach(function(radio) {
+    radio.checked = radio.value === savedAnswer;
+  });
 }
 
 prevBtn.addEventListener("click", function() {
@@ -156,20 +192,23 @@ prevBtn.addEventListener("click", function() {
 });
 
 nextBtn.addEventListener("click", function() {
+  const selected = document.querySelector(
+    `input[name="q${currentQuestion + 1}radio"]:checked`
+  );
+
+  if (!selected) {
+    alert("Vui lòng chọn một đáp án!");
+    return;
+  }
+
+  answers[currentQuestion] = selected.value;
+
   if (currentQuestion < questions.length - 1) {
     currentQuestion++;
     showQuestion(currentQuestion);
   } else {
     alert("Bạn đã hoàn thành bài trắc nghiệm!");
-    // get all radio buttons answers (a, b, c, d, null) into one big array
-    const answers= []
-    for (let i = 1; i <= 10; i++) {
-      const selected = document.querySelector(
-        `input[name="q${i}radio"]:checked`
-      ); // loop and attach a querySelector to the radios
-      answers.push(selected ? selected.value : "-1"); // if no answer chosen, return null
-    }
-    calcAnswers(answers)
+    calcAnswers(answers);
   }
 });
 
