@@ -5,8 +5,8 @@
 body {
   background-color: #313C7BA0;
   color:#EBF9FF;
-  line-height: 1.1;
-  letter-spacing: -0.05em;
+  line-height: 1.6;
+  letter-spacing: normal;
   margin: 4px;
 }
 .title {
@@ -50,6 +50,8 @@ hr {
 }
 p {
   font-size: 18px;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
 }
 button {
   background-color: #1C211D;
