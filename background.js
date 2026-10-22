@@ -15,7 +15,7 @@
     const GRID_COLS = 50;
     const GRID_ROWS = 50;
     const GRID_SPACING = 40;
-    const WAVE_SPEED = 0.3;
+    const WAVE_SPEED = 0.03;
 
     const COLOR_NORMAL_A = new THREE.Color(0x38bdf8);
     const COLOR_NORMAL_B = new THREE.Color(0x818cf8);
